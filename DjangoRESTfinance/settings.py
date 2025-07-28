@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+MY_APPS = [
+    'DjangoRESTfinance.accounts.apps.AccountsConfig',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,8 +41,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework'
-]
+    'rest_framework', # pip install django-restframework
+    'drf_spectacular', # pip install drf-spectacular
+    'rest_framework_simplejwt', # pip install djangorestframework-simplejwt
+
+] + MY_APPS
+
+# accessToken -> used to Log In
+# refreshToken -> used to get new accessToken
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema', # doc schema from swagger
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ] # Json Web Token auth
+
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Finance App',
+    'DESCRIPTION': '...',
+    'VERSION': '1.0.0',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +71,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+AUTHENTICATION_BACKENDS = [
+    'DjangoRESTfinance.accounts.authentication.EmailOrUsernameBackend',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'DjangoRESTfinance.urls'
@@ -71,14 +98,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DjangoRESTfinance.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "django_rest_finance",
+        "USER": "postgres",
+        "PASSWORD": "password",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -123,3 +150,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'accounts.AppUser'
