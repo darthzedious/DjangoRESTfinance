@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 MY_APPS = [
     'DjangoRESTfinance.accounts.apps.AccountsConfig',
+    'DjangoRESTfinance.repayment_plans.apps.RepaymentPlansConfig',
 ]
 
 INSTALLED_APPS = [
