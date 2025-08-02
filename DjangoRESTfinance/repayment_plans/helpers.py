@@ -1,4 +1,4 @@
-def calculate_present_value_annuity_factor_end_year_payment(r, n):
+def calculate_present_value_annuity_factor_end_year_payment(r: float, n: int) -> float:
     """
     Args:
         r (float): The interest rate per period (e.g., 0.1 for 10).
@@ -9,7 +9,7 @@ def calculate_present_value_annuity_factor_end_year_payment(r, n):
     af = round(1/r * (1 - 1/(1 + r)**n), 3)
     return af
 
-def calculate_equal_installment(borrowed_amount, r, n):
+def calculate_equal_installment(borrowed_amount: float, r: float, n: int) -> list:
     """
         Calculate the equal installment repayment plan.
 
@@ -48,7 +48,7 @@ def calculate_equal_installment(borrowed_amount, r, n):
 
     return repayment_plan  # List of dictionaries
 
-def calculate_equal_principle_portion(borrowed_amount, r, n):
+def calculate_equal_principle_portion(borrowed_amount: float, r: float, n: int) -> list:
     """
        Calculate the equal principal portion payment plan.
 
@@ -87,16 +87,16 @@ def calculate_equal_principle_portion(borrowed_amount, r, n):
 
     return repayment_plan
 
-def calculate_equal_installment_changeable_ip_repayment_plan(borrowed_amount, r1, r2, n1, n2):
+def calculate_equal_installment_changeable_ip_repayment_plan(borrowed_amount: float, r1: float, r2: float, n1: int, n2: int) -> list:
     """
        Calculate the equal installment changeable ip repayment plan with overtime changeable interest rate.
 
        Args:
            borrowed_amount (float): the total amount borrowed
-           n1 (int): The number of the first repayment period
-           n2 (int): The number of the second repayment period
            r1 (float): The interest rate for the first period (e.g., 0.1 for 10%)
            r2 (float): The interest rate for the second period (e.g., 0.08 for 8%)
+           n1 (int): The number of the first repayment period
+           n2 (int): The number of the second repayment period
 
        Returns:
        str: A formatted table of the repayment plan.
@@ -146,16 +146,16 @@ def calculate_equal_installment_changeable_ip_repayment_plan(borrowed_amount, r1
     return repayment_plan
 
 
-def calculate_equal_principle_portion_changeable_ip_repayment_plan(borrowed_amount, r1, r2, n1, n2):
+def calculate_equal_principle_portion_changeable_ip_repayment_plan(borrowed_amount: float, r1: float, r2: float, n1: int, n2: int) -> list:
     """
         Calculate the equal principal portion payment plan with overtime changeable interest rate.
 
         Args:
             borrowed_amount (float): the total amount borrowed
-            n1 (int): The number of the first repayment period
-            n2 (int): The number of the second repayment period
             r1 (float): The interest rate for the first period (e.g., 0.1 for 10%)
             r2 (float): The interest rate for the second period (e.g., 0.08 for 8%)
+            n1 (int): The number of the first repayment period
+            n2 (int): The number of the second repayment period
 
         Returns:
         str: A formatted table of the repayment plan.

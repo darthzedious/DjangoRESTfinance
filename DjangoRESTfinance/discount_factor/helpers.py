@@ -1,4 +1,4 @@
-def calculate_the_discount_factor(r, n):
+def calculate_the_discount_factor(r: float, n: float) -> float:
     """
        Calculate the discount factor for a given interest rate and time period.
 
@@ -13,7 +13,7 @@ def calculate_the_discount_factor(r, n):
     df = 1/(1 + r)**n
     return round(df, 3)
 
-def discounting_present_value(fv, r, n):
+def discounting_present_value(fv: float, r: float, n: float) -> float:
     """
        Calculate the present value of a future amount using discounting.
 
