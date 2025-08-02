@@ -33,6 +33,7 @@ MY_APPS = [
     'DjangoRESTfinance.accounts.apps.AccountsConfig',
     'DjangoRESTfinance.repayment_plans.apps.RepaymentPlansConfig',
     'DjangoRESTfinance.annuity_factor.apps.AnnuityFactorConfig',
+    'DjangoRESTfinance.discount_factor.apps.DiscountFactorConfig',
 ]
 
 INSTALLED_APPS = [

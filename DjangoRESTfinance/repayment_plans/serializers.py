@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from drf_spectacular.utils import extend_schema_field
 
 from .models import EqualInstallmentPlan, EqualPrincipalPortionPlan, EqualInstallmentChangeableIPPlan, EqualPrincipalPortionChangeableIPPlan
 from .helpers import (calculate_equal_installment, calculate_equal_principle_portion,
@@ -25,6 +26,7 @@ class EqualInstallmentPlanSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
 
+    @extend_schema_field(str)
     def get_user_name(self, obj):
         return obj.user.username  # or obj.user.get_full_name() or obj.user.email
 
@@ -48,6 +50,7 @@ class EqualPrincipalPortionSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
 
+    @extend_schema_field(str)
     def get_user_name(self, obj):
         return obj.user.username
 
@@ -74,6 +77,7 @@ class EqualInstallmentChangeableIPPlanSerializer(serializers.ModelSerializer):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
 
+    @extend_schema_field(str)
     def get_user_name(self, obj):
         return obj.user.name
 
@@ -99,5 +103,6 @@ class EqualPrincipalPortionChangeableIPPlanSerializer(serializers.ModelSerialize
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
 
+    @extend_schema_field(str)
     def get_user_name(self, obj):
         return obj.user.name

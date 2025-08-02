@@ -9,7 +9,7 @@ from .serializers import (EqualInstallmentPlanSerializer, EqualPrincipalPortionS
 
 class EqualInstallmentPlanViewSet(ModelViewSet):
     serializer_class = EqualInstallmentPlanSerializer
-    model = EqualInstallmentPlan
+    queryset = EqualInstallmentPlan.objects.all()
     permission_classes = [IsAuthenticated]
 
 
@@ -19,7 +19,7 @@ class EqualInstallmentPlanViewSet(ModelViewSet):
 
 
 class EqualPrincipalPortionPlanViewSet(ModelViewSet):
-    model = EqualPrincipalPortionPlan
+    queryset = EqualPrincipalPortionPlan.objects.all()
     serializer_class = EqualPrincipalPortionSerializer
     permission_classes = [IsAuthenticated]
 
@@ -29,7 +29,7 @@ class EqualPrincipalPortionPlanViewSet(ModelViewSet):
 
 
 class EqualInstallmentChangeableIPPlanViewSet(ModelViewSet):
-    model = EqualInstallmentChangeableIPPlan
+    queryset = EqualInstallmentChangeableIPPlan.objects.all()
     serializer_class = EqualInstallmentChangeableIPPlanSerializer
     permission_classes = [IsAuthenticated]
 
@@ -39,7 +39,7 @@ class EqualInstallmentChangeableIPPlanViewSet(ModelViewSet):
 
 
 class EqualPrincipalPortionChangeableIPPlanViewSet(ModelViewSet):
-    model = EqualPrincipalPortionChangeableIPPlan
+    queryset = EqualPrincipalPortionChangeableIPPlan.objects.all()
     serializer_class = EqualPrincipalPortionChangeableIPPlanSerializer
     permission_classes = [IsAuthenticated]
 
